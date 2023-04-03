@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Get CSS Code for free</title>
+</head>
+<body>
+<div id="Container">
+  <center><p></p>
+<input type="text" name="websiteName" id="websiteName" ><br><p></p><button id="GetCode">Get the CSS Code</button><br><p></p>
+</center>
+<textarea id="cssContent" disabled></textarea><p>
+<center>
+<button id="copyBtn">Copy Code!</button>
+</center>
+</div>
+<script>
+async function fetchCSS(html) {
+  const parser = new DOMParser();
+  const doc = parser.parseFromString(html, 'text/html');
+  const linkElements = doc.querySelectorAll('link[rel="stylesheet"]');
+  const styleElements = doc.querySelectorAll('style');
+  let css = '';
+
+  for (const styleElement of styleElements) {
+    css += styleElement.textContent;
+  }
+
+  for (const linkElement of linkElements) {
+    const href = linkElement.getAttribute('href');
+    if (href) {
+      try {
+        const response = await fetch(href);
+        const cssContent = await response.text();
+        css += cssContent;
+      } catch (error) {
+        console.error('Error fetching CSS:', error);
+      }
+    }
+  }
+
+  return css;
+}
+
+var websiteName = document.getElementById('websiteName');
+var GetCode = document.getElementById('GetCode');
+var cssContent = document.getElementById('cssContent');
+
+GetCode.addEventListener('click', async function () {
+  cssContent.value = "Loading...";
+  
+  const response = await fetch('https://api.codetabs.com/v1/proxy?quest=' + websiteName.value);
+  const html = await response.text();
+  const css = await fetchCSS(html);
+  cssContent.value = css;
+});
+
+copyBtn.addEventListener('click', function(){
+  var r = document.createRange();
+  r.selectNode(document.getElementById("cssContent"));
+  window.getSelection().removeAllRanges();
+  window.getSelection().addRange(r);
+  document.execCommand('copy');
+  window.getSelection().removeAllRanges();
+  alert("Copied!");
+});
+</script>
+<style>
+  input {
+    background-color: black;
+    color: white;
+    outline: 0;
+    border: 2px solid #fff;
+    height: 5vh;
+    transition: 1s ease-in-out;
+  }
+  input:hover {
+    border-radius: 5vw;
+  }
+  #cssContent {
+    margin-left: 3.5vw;
+    height: 70vh;
+    font-size: 12px;
+    width: 90vw;
+    background-color: black;
+    color: #00ff59;
+    border: 2px solid #fff;
+    transition: 1s ease-in-out;
+  }
+  html {
+    background-color: black;
+    outline: 0;
+  }
+  button {
+    border: 2px solid #fff;
+    color: white;
+    background-color: black;
+    height: 5vh;
+    transition: 1s ease-in-out;
+  }
+  button:hover {
+    border-radius: 5vw;
+    transition: 1s ease-in-out;
+  }
+</style>
+</body>
+</html>
