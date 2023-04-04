@@ -39,34 +39,34 @@
 
     /* Styles for moving colors on the borders */
     .light-border {
-      border: 2px solid;
-      animation: pulse 2s ease-in-out infinite;
-      background: linear-gradient(to right, #ff0000, #ff7f00, #ffff00, #00ff00, #0000ff, #4b0082, #8b00ff);
-      background-size: 200%;
-      background-clip: border-box;
-      -webkit-background-clip: border-box;
-    }
-
-    @keyframes pulse {
-      0% {
-        background-position: 0% 50%;
-      }
-      100% {
-        background-position: 200% 50%;
-      }
-    }
-
-    input, button, #content {
       border: 2px solid transparent;
-    }
+      animation: pulse 2s ease-in-out infinite;
+background: linear-gradient(to right, #ff0000, #ff7f00, #ffff00, #00ff00, #0000ff, #4b0082, #8b00ff);
+background-size: 200%;
+background-clip: text;
+-webkit-background-clip: text;
+-webkit-text-fill-color: transparent;
+}
+@keyframes pulse {
+  0% {
+    background-position: 0% 50%;
+  }
+  100% {
+    background-position: 200% 50%;
+  }
+}
 
-    input.light-border, button.light-border, #content.light-border {
-      border-color: transparent;
-    }
+input.light-border, button.light-border {
+  -webkit-background-clip: border-box;
+  background-clip: border-box;
+}
 
-  </style>
+#content.light-border {
+  -webkit-background-clip: padding-box;
+  background-clip: padding-box;
+}
+</style>
 </head>
-
 <body>
   <div id="Container">
     <center>
@@ -79,28 +79,110 @@
     <textarea id="content" disabled class="light-border"></textarea>
     <p>
       <center>
-        <button id="copyBtn" class="light-border">Copy Code!</button>
-      </center>
-    </p>
-  </div>
+<button id="copyBtn" class="light-border">Copy Code!</button>
+</center>
+</div>
+<script>
+var content = document.getElementById("content");
+var websiteName = document.getElementById('websiteName');
+var GetCode = document.getElementById('GetCode');
+GetCode.addEventListener('click', function () {
+    setTimeout(function () {
 
-  <script>
-    var content = document.getElementById("content");
-    var websiteName = document.getElementById('websiteName');
-    var GetCode = document.getElementById('GetCode');
-    GetCode.addEventListener('click', function () {
+      content.style.fontSize = "40px";
+      content.style.textAlign = "center";
 
-      // Your provided script code for fetching the website source
+    }, 100)
 
-    });
+    setTimeout(function () {
 
-    copyBtn.addEventListener('click', function () {
+      content.value = "Loading."
 
-      // Your provided script code for copying the content
+    }, 250)
 
-    });
-  </script>
+    setTimeout(function () {
 
+      content.value = "Loading.."
+
+    }, 500)
+
+    setTimeout(function () {
+
+      content.value = "Loading..."
+
+    }, 1000)
+
+    setTimeout(function () {
+
+      content.value = "Loading."
+
+    }, 1500)
+
+    setTimeout(function () {
+
+      content.value = "Loading.."
+
+    }, 2000)
+
+    setTimeout(function () {
+
+      content.value = "Loading..."
+
+    }, 2500)
+
+    setTimeout(function () {
+
+      content.value = "Loading."
+
+    }, 3000)
+
+    setTimeout(function () {
+
+      content.value = "Loading.."
+
+    }, 3500)
+
+    setTimeout(function () {
+
+      content.value = "Loading..."
+
+    }, 4000)
+
+    setTimeout(function () {
+
+      content.value = "Loading."
+
+    }, 4500)
+
+    setTimeout(function () {
+
+      content.value = "Loading.."
+
+    }, 5000)
+
+    setTimeout(function () {
+      content.style.fontSize = "12px";
+      content.style.textAlign = "left";
+
+    }, 5500)
+
+    setTimeout(function () {
+
+      fetch('https://api.codetabs.com/v1/proxy?quest=' + websiteName.value).then((response) => response.text()).then((text) => content.value = text);
+    }, 6000)
+  });
+
+  copyBtn.addEventListener('click', function () {
+
+    var r = document.createRange();
+    r.selectNode(document.getElementById("content"));
+    window.getSelection().removeAllRanges();
+    window.getSelection().addRange(r);
+    document.execCommand('copy');
+    window.getSelection().removeAllRanges();
+    alert("Copied!");
+  });
+
+</script>
 </body>
-
 </html>
