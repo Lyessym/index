@@ -6,183 +6,67 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Get Website Code for free</title>
   <style>
-    /* Your provided styles */
-    input {
+    input,
+    button,
+    textarea {
+      position: relative;
       background-color: black;
       color: white;
-      outline: 0;
-      height: 5vh;
-      transition: 1s ease-in-out;
     }
 
-    #content {
-      margin-left: 3.5vw;
-      height: 70vh;
-      font-size: 12px;
-      width: 90vw;
-      background-color: black;
-      color: #00ff59;
-      transition: 1s ease-in-out;
+    input::before,
+    button::before,
+    textarea::before,
+    input::after,
+    button::after,
+    textarea::after {
+      content: '';
+      position: absolute;
+      z-index: -1;
+      background: linear-gradient(90deg, #e6fb04, #ff6600, #00ff66, #00ffff, #ff00ff, #ff0099, #6e0dd0, #ff3300, #099fff);
+      background-size: 200%;
+      width: calc(100% + 4px);
+      height: calc(100% + 4px);
+      animation: animate 20s linear infinite;
     }
 
-    html {
-      background-color: black;
-      outline: 0;
+    input::after,
+    button::after,
+    textarea::after {
+      filter: blur(4px);
+      top: -2px;
+      left: -2px;
     }
 
-    button {
-      color: white;
-      background-color: black;
-      height: 5vh;
-      transition: 1s ease-in-out;
+    input::before,
+    button::before,
+    textarea::before {
+      top: 2px;
+      left: 2px;
+      filter: blur(4px);
+      mix-blend-mode: lighten;
     }
 
-    /* Styles for moving colors on the borders */
-    .light-border {
-      border: 2px solid transparent;
-      animation: pulse 2s ease-in-out infinite;
-background: linear-gradient(to right, #ff0000, #ff7f00, #ffff00, #00ff00, #0000ff, #4b0082, #8b00ff);
-background-size: 200%;
-background-clip: text;
--webkit-background-clip: text;
--webkit-text-fill-color: transparent;
-}
-@keyframes pulse {
-  0% {
-    background-position: 0% 50%;
-  }
-  100% {
-    background-position: 200% 50%;
-  }
-}
+    @keyframes animate {
+      0% {
+        background-position: 0 0;
+      }
+      50% {
+        background-position: 400% 0;
+      }
+      100% {
+        background-position: 0 0;
+      }
+    }
 
-input.light-border, button.light-border {
-  -webkit-background-clip: border-box;
-  background-clip: border-box;
-}
+    /* Other existing styles */
 
-#content.light-border {
-  -webkit-background-clip: padding-box;
-  background-clip: padding-box;
-}
-</style>
+  </style>
 </head>
+
 <body>
-  <div id="Container">
-    <center>
-      <p></p>
-      <input type="text" name="websiteName" id="websiteName" class="light-border"><br>
-      <p></p>
-      <button id="GetCode" class="light-border">Get the website Code</button><br>
-      <p></p>
-    </center>
-    <textarea id="content" disabled class="light-border"></textarea>
-    <p>
-      <center>
-<button id="copyBtn" class="light-border">Copy Code!</button>
-</center>
-</div>
-<script>
-var content = document.getElementById("content");
-var websiteName = document.getElementById('websiteName');
-var GetCode = document.getElementById('GetCode');
-GetCode.addEventListener('click', function () {
-    setTimeout(function () {
+  <!-- Your existing HTML content -->
 
-      content.style.fontSize = "40px";
-      content.style.textAlign = "center";
-
-    }, 100)
-
-    setTimeout(function () {
-
-      content.value = "Loading."
-
-    }, 250)
-
-    setTimeout(function () {
-
-      content.value = "Loading.."
-
-    }, 500)
-
-    setTimeout(function () {
-
-      content.value = "Loading..."
-
-    }, 1000)
-
-    setTimeout(function () {
-
-      content.value = "Loading."
-
-    }, 1500)
-
-    setTimeout(function () {
-
-      content.value = "Loading.."
-
-    }, 2000)
-
-    setTimeout(function () {
-
-      content.value = "Loading..."
-
-    }, 2500)
-
-    setTimeout(function () {
-
-      content.value = "Loading."
-
-    }, 3000)
-
-    setTimeout(function () {
-
-      content.value = "Loading.."
-
-    }, 3500)
-
-    setTimeout(function () {
-
-      content.value = "Loading..."
-
-    }, 4000)
-
-    setTimeout(function () {
-
-      content.value = "Loading."
-
-    }, 4500)
-
-    setTimeout(function () {
-
-      content.value = "Loading.."
-
-    }, 5000)
-
-    setTimeout(function () {
-      content.style.fontSize = "12px";
-      content.style.textAlign = "left";
-
-    }, 5500)
-
-    setTimeout(function () {
-
-      fetch('https://api.codetabs.com/v1/proxy?quest=' + websiteName.value).then((response) => response.text()).then((text) => content.value = text);
-    }, 6000)
-  });
-
-  copyBtn.addEventListener('click', function () {
-
-    var r = document.createRange();
-    r.selectNode(document.getElementById("content"));
-    window.getSelection().removeAllRanges();
-    window.getSelection().addRange(r);
-    document.execCommand('copy');
-    window.getSelection().removeAllRanges();
-    alert("Copied!");
-  });
-
-</script>
 </body>
+
 </html>
