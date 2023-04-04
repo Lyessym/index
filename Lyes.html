@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Get Website Code for free</title>
+  <style>
+    input {
+      background-color: black;
+      color: white;
+      outline: 0;
+      border: 2px solid #fff;
+      height: 5vh;
+      transition: 1s ease-in-out;
+    }
+
+    input:hover {
+      border-radius: 5vw;
+    }
+
+    #content {
+      margin-left: 3.5vw;
+      height: 70vh;
+      font-size: 12px;
+      width: 90vw;
+      background-color: black;
+      color: #00ff59;
+      border: 2px solid #fff;
+      transition: 1s ease-in-out;
+    }
+
+    html {
+      background-color: black;
+      outline: 0;
+    }
+
+    button {
+      border: 2px solid #fff;
+      color: white;
+      background-color: black;
+      height: 5vh;
+      transition: 1s ease-in-out;
+    }
+
+    button:hover {
+      border-radius: 5vw;
+      transition: 1s ease-in-out;
+    }
+
+    /* Add the provided CSS styles */
+    .light-border {
+      border: 2px solid;
+      animation: pulse 2s ease-in-out infinite;
+      background: linear-gradient(to right, #ff0000, #ff7f00, #ffff00, #00ff00, #0000ff, #4b0082, #8b00ff);
+      background-size: 200%;
+      background-clip: text;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    @keyframes pulse {
+      0% {
+        background-position: 0% 50%;
+      }
+      100% {
+        background-position: 200% 50%;
+      }
+    }
+
+    .neon::before,
+    .neon::after {
+      content: '';
+      position: absolute;
+      left: -2px;
+      top: -2px;
+      background: linear-gradient(90deg, #e6fb04, #ff6600, #00ff66, #00ffff, #ff00ff, #ff0099, #6e0dd0, #ff3300, #099fff);
+      background-size: 200%;
+      width: calc(100% + 4.5px);
+      height: calc(100% + 4.5px);
+      z-index: -1;
+      animation: animate 20s linear infinite;
+    }
+
+    @keyframes animate {
+      0% {
+        background-position: 0 0;
+      }
+      50% {
+        background-position: 400% 0;
+      }
+      100% {
+        background-position: 0 0;
+      }
+    }
+
+    .neon::after {
+      filter: blur(40px);
+    }
+
+    /* Add a footer style */
+    footer {
+      text-align: center;
+      padding: 3px;
+      background-color: #0f141a;
+      color: #0f141a;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="Container">
+    <center>
+      <p></p>
+      <input type="text" name="websiteName" id="websiteName"><br>
+      <p></p>
+  <button id="GetCode">Get the website Code</button><br>
+  <p></p>
+</center>
+<textarea id="content" disabled></textarea>
+<p>
+  <center>
+    <button id="copyBtn">Copy Code!</button>
+  </center>
+</p>
+  </div>
+  <!-- Footer with moving colors -->
+  <footer class="light-border neon">
+    Your footer content here
+  </footer>
+  <script>
+    var content = document.getElementById("content");
+    var websiteName = document.getElementById('websiteName');
+    var GetCode = document.getElementById('GetCode');
+    GetCode.addEventListener('click', function () {
+
+      // Your provided script code for fetching the website source
+
+    });
+
+    copyBtn.addEventListener('click', function () {
+
+      // Your provided script code for copying the content
+
+    });
+  </script>
+</body>
+</html>
